@@ -5,7 +5,7 @@ namespace ETM\AppBundle\Soap;
 use RobRichards\WsePhp\WSSESoap;
 use RobRichards\XMLSecLibs\XMLSecurityKey;
 
-class MySoap extends \SoapClient
+class ETMSystemSoapClient extends \SoapClient
 {
     private $pathToCert;
     private $pathToPrivateKey;
@@ -37,7 +37,7 @@ class MySoap extends \SoapClient
         return file_get_contents($this->getPathToCert());
     }
 
-    function __doRequest($request, $location, $saction, $version, $q = 0) {
+    public function __doRequest($request, $location, $saction, $version, $q = 0) {
 
         $doc = new \DOMDocument('1.0');
         $doc->loadXML($request);

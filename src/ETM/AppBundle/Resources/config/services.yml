@@ -1,4 +1,7 @@
 services:
-#    app.example:
-#        class: ETM\AppBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    etm_system_soap_client_factory:
+        class: ETM\AppBundle\Soap\ETMSystemSoapClientFactory
+        arguments:
+            - %soap_client.wsdl%
+            - %soap_client.cert%
+            - %soap_client.key%
