@@ -12,6 +12,10 @@ class ETMSystemSoapClient extends \SoapClient
 
     protected function getPathToCert()
     {
+        if ( ! $this->pathToCert) {
+            throw new \RuntimeException("Не указан путь к файлу сертификата.");
+        }
+
         return $this->pathToCert;
     }
 
@@ -23,6 +27,10 @@ class ETMSystemSoapClient extends \SoapClient
 
     protected function getPathToPrivateKey()
     {
+        if ( ! $this->pathToPrivateKey) {
+            throw new \RuntimeException("Не указан путь к файлу ключа.");
+        }
+
         return $this->pathToPrivateKey;
     }
 
