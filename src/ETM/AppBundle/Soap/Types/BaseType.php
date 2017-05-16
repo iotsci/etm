@@ -7,9 +7,9 @@ abstract class BaseType
 
     final public function getArray()
     {
-        $ref = new \ReflectionClass($this);
+        $reflectionObject = new \ReflectionClass($this);
 
-        return $this->handleArray($ref->getProperties(), $this);
+        return $this->handleArray($reflectionObject->getProperties(), $this);
     }
 
     private function handleArray(array $properties, $object)
@@ -21,13 +21,16 @@ abstract class BaseType
 
             $property->setAccessible(true);
 
-            if (is_object($property->getValue($object))) {
-                $ref = new \ReflectionClass($property->getValue($object));
+            $value = $property->getValue($object);
+            $keyName = $property->getName();
 
-                $resultArray[$property->getName()] = $this->handleArray($ref->getProperties(), $property->getValue($object));
+            if (is_object($value)) {
+                $reflectionObject = new \ReflectionClass($value);
+
+                $resultArray[$keyName] = $this->handleArray($reflectionObject->getProperties(), $value);
 
             } else {
-                $resultArray[$property->getName()] = $property->getValue($object);
+                $resultArray[$keyName] = $value;
             }
         }
         return $resultArray;
