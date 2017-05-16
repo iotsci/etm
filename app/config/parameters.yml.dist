@@ -18,6 +18,9 @@ parameters:
     soap_client.wsdl: ~
     soap_client.cert: ~
     soap_client.key: ~
+    soap_client.login: ~
+    soap_client.password: ~
+    soap_client.hashkey: ~
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
