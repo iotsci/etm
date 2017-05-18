@@ -1,6 +1,6 @@
 <?php
 
-namespace ETM\AppBundle\Soap;
+namespace ETM\AppBundle\Soap\Client;
 
 use RobRichards\WsePhp\WSSESoap;
 use RobRichards\XMLSecLibs\XMLSecurityKey;
