@@ -4,7 +4,7 @@ namespace ETM\AppBundle\Converter;
 
 use ETM\AppBundle\Types\BaseType;
 
-class ObjectToArrayConverter implements ConverterInterface
+class ObjectToArrayConverter
 {
 
     public function convert(BaseType $baseType)

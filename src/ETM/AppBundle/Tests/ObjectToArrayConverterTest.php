@@ -2,12 +2,10 @@
 
 namespace ETM\AppBundle\Tests;
 
-use ETM\AppBundle\Converter\ConverterInterface;
 use ETM\AppBundle\Converter\ObjectToArrayConverter;
 use ETM\AppBundle\Test\TestType;
 use ETM\AppBundle\Types\BaseType;
 use ETM\AppBundle\Types\DoAirFareRQ;
-use ETM\AppBundle\Types\GetAirFareRQ;
 use ETM\AppBundle\Types\OriginDestinationInformationType;
 use ETM\AppBundle\Types\PassengerQuantityType;
 use ETM\AppBundle\Types\Security;
@@ -16,7 +14,7 @@ use ETM\AppBundle\Types\TravelerInfoSummaryType;
 class ObjectToArrayConverterTest extends \PHPUnit_Framework_TestCase
 {
 
-    /** @var ConverterInterface $converter */
+    /** @var ObjectToArrayConverter $converter */
     protected $converter;
     /** @var BaseType $testType */
     protected $testType;
