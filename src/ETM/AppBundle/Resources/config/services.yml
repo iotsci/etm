@@ -1,7 +1,27 @@
 services:
     etm_system_soap_client_factory:
-        class: ETM\AppBundle\Soap\ETMSystemSoapClientFactory
+        class: ETM\AppBundle\Soap\Client\ETMSystemSoapClientFactory
+        public: false
         arguments:
-            - %soap_client.wsdl%
-            - %soap_client.cert%
-            - %soap_client.key%
+            - '%soap_client.wsdl%'
+            - '%soap_client.cert%'
+            - '%soap_client.key%'
+
+    object_to_array_converter_factory:
+        class: ETM\AppBundle\Converter\ObjectToArrayConverterFactory
+        public: false
+
+    security_type:
+        class: ETM\AppBundle\Types\Security
+        public: false
+        arguments:
+            - '%soap_client.login%'
+            - '%soap_client.password%'
+            - '%soap_client.hashkey%'
+
+    etm_system_communicator:
+        class: ETM\AppBundle\Soap\Communicator\ETMSystemCommunicator
+        arguments:
+            - '@etm_system_soap_client_factory'
+            - '@object_to_array_converter_factory'
+            - '@security_type'
