@@ -101,7 +101,7 @@ class ObjectToArrayConverterTest extends \PHPUnit_Framework_TestCase
             ],
             'OriginDestinationInformation' => [
                 [
-                    'DepartureDateTime' => new \DateTime('2017-05-18'),
+                    'DepartureDateTime' => (new \DateTime('2017-05-18'))->format('c'),
                     'OriginLocation' => 'from',
                     'DestinationLocation' => 'to',
                 ]

@@ -32,6 +32,9 @@ class ObjectToArrayConverter implements ConverterInterface
                 $reflectionObject = new \ReflectionObject($value);
                 $result = $this->handle($reflectionObject->getProperties(), $value);
                 $resultArray[$keyName] = $result;
+            } elseif ($value instanceof \DateTime) {
+
+                $resultArray[$keyName] = $value->format('c');
             } elseif (is_array($value)) {
 
                 $result = [];
