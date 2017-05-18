@@ -7,14 +7,12 @@ use ETM\AppBundle\Types\BaseType;
 class ObjectToArrayConverter implements ConverterInterface
 {
 
-
     public function convert(BaseType $baseType)
     {
 
         $reflectionObject = new \ReflectionObject($baseType);
 
         return $this->handle($reflectionObject->getProperties(), $baseType);
-
     }
 
     protected function handle(array $properties, $object)
@@ -29,12 +27,11 @@ class ObjectToArrayConverter implements ConverterInterface
             $value = $property->getValue($object);
             $keyName = $property->getName();
 
-            if (is_object($value) && ! $value instanceof \DateTime) {
+            if (is_object($value) && !$value instanceof \DateTime) {
 
                 $reflectionObject = new \ReflectionObject($value);
                 $result = $this->handle($reflectionObject->getProperties(), $value);
                 $resultArray[$keyName] = $result;
-
             } elseif (is_array($value)) {
 
                 $result = [];
@@ -45,7 +42,6 @@ class ObjectToArrayConverter implements ConverterInterface
                 }
 
                 $resultArray[$keyName] = $result;
-
             } else {
                 $resultArray[$keyName] = $value;
             }
