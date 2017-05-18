@@ -1,6 +1,6 @@
 <?php
 
-namespace ETM\AppBundle\Soap\Types;
+namespace ETM\AppBundle\Types;
 
 class Security extends BaseType
 {
