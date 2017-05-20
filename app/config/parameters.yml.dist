@@ -22,7 +22,7 @@ parameters:
     soap_client.password: ~
     soap_client.hashkey: ~
 
-    iate_json_file: '%kernel.root_dir%/Recources/airports.json'
+    iata_json_file: '%kernel.root_dir%/Recources/airports.json'
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
