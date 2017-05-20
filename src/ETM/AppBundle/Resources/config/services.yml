@@ -25,3 +25,9 @@ services:
             - '@etm_system_soap_client_factory'
             - '@object_to_array_converter_factory'
             - '@security_type'
+
+    iata_fetcher:
+        class: ETM\AppBundle\IATA\IATAFetcher
+        arguments:
+            - '@filesystem'
+            - '%iata_json_file%'
