@@ -17,11 +17,17 @@ class IATAFetcher
 
     public function fetch()
     {
+        $this->validate();
+
+        return file_get_contents($this->IATAJson);
+    }
+
+    protected function validate() {
+
         if (! $this->isFileExists()) {
             throw new \RuntimeException(sprintf("Файл \"%s\" не существует", $this->IATAJson));
         }
 
-        return file_get_contents($this->IATAJson);
     }
 
     protected function isFileExists()
