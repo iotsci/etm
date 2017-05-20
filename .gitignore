@@ -11,5 +11,5 @@
 /bin/
 /composer.phar
 /.idea/
-/app/key.key
-/app/cert.crt
+/app/Resources/key.key
+/app/Resources/cert.crt
