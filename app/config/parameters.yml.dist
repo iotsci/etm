@@ -16,8 +16,8 @@ parameters:
     mailer_password: ~
 
     soap_client.wsdl: ~
-    soap_client.cert: ~
-    soap_client.key: ~
+    soap_client.cert: '%kernel.root_dir%/cert.crt'
+    soap_client.key: '%kernel.root_dir%/key.key'
     soap_client.login: ~
     soap_client.password: ~
     soap_client.hashkey: ~
