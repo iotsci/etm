@@ -45,11 +45,7 @@ class DefaultController extends Controller
      */
     public function getPassengerTypesAction()
     {
-        return new JsonResponse([
-            PassengerQuantityType::ADT => 'Adult',
-            PassengerQuantityType::CHD => 'Child',
-            PassengerQuantityType::INF => 'Infant'
-        ]);
+        return new JsonResponse(PassengerQuantityType::getTypes());
     }
 
     /**

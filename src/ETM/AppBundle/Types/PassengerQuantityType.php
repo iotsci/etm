@@ -11,6 +11,15 @@ class PassengerQuantityType extends BaseType
     const CHD = 'CHD';
     const INF = 'INF';
 
+    public static function getTypes()
+    {
+        return [
+            self::ADT => 'Adult',
+            self::CHD => 'Child',
+            self::INF => 'Infant',
+        ];
+    }
+
     public function __construct($type, $quantity)
     {
         $this->Type = $type;
