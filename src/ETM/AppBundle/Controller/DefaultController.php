@@ -7,8 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -60,6 +60,35 @@ class DefaultController extends Controller
         $passengerType = $request->get('passenger_type');
         $passengerQuantity = (int) $request->get('passenger_quantity');
 
-        return new JsonResponse([$from, $to, $departureDate, $passengerType, $passengerQuantity]);
+        $communicator = $this->get('etm_system_communicator');
+
+        return new JsonResponse($communicator->doAirFareRequest($from, $to, $departureDate, $passengerType, $passengerQuantity));
+    }
+
+    /**
+     * @Route("get_request_result/{requestId}")
+     * @Method("GET")
+     * @param integer $requestId
+     * @return JsonResponse
+     */
+    public function getRequestResultAction($requestId)
+    {
+        $communicator = $this->get('etm_system_communicator');
+
+        return new JsonResponse($communicator->getAirFareResult($requestId));
+    }
+
+    /**
+     * @Route("output_result/{request_id}")
+     * @Method("GET")
+     * @param integer $request_id
+     * @return Response
+     */
+    public function outputResultsAction($request_id)
+    {
+        $communicator = $this->get('etm_system_communicator');
+
+        $result = $communicator->getAirFareResult($request_id);
+        return $this->render('AppBundle::result.html.twig', ["results" => $result->FareDisplayInfos]);
     }
 }
