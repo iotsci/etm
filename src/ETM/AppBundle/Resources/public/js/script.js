@@ -64,10 +64,15 @@ $(document).ready(function() {
 
     function enableSearchButton() {
         $doAirFareRQ.text('Search');
-        $doAirFareRQ.attr('disabled', false);
+        $doAirFareRQ.prop('disabled', false);
     }
 
     function validate() {
+
+        if ($doAirFareRQ.attr('disabled')) {
+            return false;
+        }
+
         if ($originLocation.val() === '') {
             $originLocationGroup.addClass('has-error');
             $originLocation.focus();
